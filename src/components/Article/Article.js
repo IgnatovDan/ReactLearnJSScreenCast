@@ -3,22 +3,21 @@ import {Component} from 'react';
 class Article extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpened: false };
-    this.toggleBodyHandler = this.toggleBodyHandler.bind(this);
+    this.state = { isOpened: props.article?.isOpened }; // TODO: is it correct?
   }
 
-  toggleBodyHandler() {
+  toggleBodyButtonHandler = () => {
     this.setState({ isOpened: !this.state.isOpened });
   }
 
   render() {
-    const { article } = this.props;
+    const article= this.props.article || {};
     const articleBody = this.state.isOpened && <div>{article.text}</div>;
     return (
       <div>
         <h2>
           {article.title}
-          <button onClick={this.toggleBodyHandler}>
+          <button onClick={this.toggleBodyButtonHandler}>
             { this.state.isOpened ? 'Close' : 'Open' }
           </button>
         </h2>
