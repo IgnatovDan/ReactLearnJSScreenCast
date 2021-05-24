@@ -26,6 +26,9 @@ test('isOpened: false', () => {
 });
 
 test('toggleBodyButtonHandler', () => {
-    render(<Article article={{text: 'text1'}} defaultIsOpened={false}/>);
+    // TODO: how to test it ?
+});
+
+test('UNSAFE_componentWillReceiveProps', () => {
     // TODO: how to test it ?
 });

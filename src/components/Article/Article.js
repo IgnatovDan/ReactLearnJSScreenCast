@@ -2,17 +2,26 @@ import { Component } from 'react';
 
 class Article extends Component {
   constructor(props) {
+    console.log('Article.ctor');
     super(props);
-    this.state = { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }; // TODO: is it correct?
+    this.state = { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }; // TODO: copy value from props to state: is it correct?
   }
 
   toggleBodyButtonHandler = () => {
     this.setState({ isOpened: !this.state.isOpened });
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if(nextProps.defaultIsOpened !== this.props.defaultIsOpened) {
+      // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+      this.setState({ isOpened: (nextProps.defaultIsOpened === undefined) ? true : nextProps.defaultIsOpened });
+    }
+    console.log("componentWillReceiveProps");
+  }
+
   render() {
-    // TODO: float-right doesn't work
-    // TODO: inplace suggestions doesn't work for className: "card mx-auto"
+    // TODO: why 'float-right' doesn't work
+    // TODO: why inplace suggestions doesn't work for className: "card mx-auto"
 
     const article = this.props.article || {};
     const articleBody = this.state.isOpened && <div className = "card-text">{article.text}</div>;
