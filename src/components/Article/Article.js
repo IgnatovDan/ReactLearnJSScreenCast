@@ -11,13 +11,18 @@ class Article extends Component {
     this.setState({ isOpened: !this.state.isOpened });
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.defaultIsOpened !== this.props.defaultIsOpened) {
-      // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
-      this.setState({ isOpened: (nextProps.defaultIsOpened === undefined) ? true : nextProps.defaultIsOpened });
-    }
-    console.log("componentWillReceiveProps");
+  static getDerivedStateFromProps(props, state) {
+    // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+    return { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }
   }
+
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (nextProps.defaultIsOpened !== this.props.defaultIsOpened) {
+  //     // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+  //     //this.setState({ isOpened: (nextProps.defaultIsOpened === undefined) ? true : nextProps.defaultIsOpened });
+  //   }
+  //   console.log("componentWillReceiveProps");
+  // }
 
   render() {
     // TODO: why 'float-right' doesn't work
