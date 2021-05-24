@@ -11,19 +11,23 @@ class Article extends Component {
     this.setState({ isOpened: !this.state.isOpened });
   }
 
-  static getDerivedStateFromProps(props, state) {
-    // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
-    // TODO: no condition to simplify code
-    return { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }
-  }
-
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   if (nextProps.defaultIsOpened !== this.props.defaultIsOpened) {
-  //     // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
-  //     //this.setState({ isOpened: (nextProps.defaultIsOpened === undefined) ? true : nextProps.defaultIsOpened });
+  // static getDerivedStateFromProps(props, state) {
+  //   // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+  //   // TODO: no condition to simplify code
+  //   if ((props.defaultIsOpened === undefined && state.isOpened !== true)
+  //   || (props.defaultIsOpened !== state.isOpened)) {
+  //     return { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }
   //   }
-  //   console.log("componentWillReceiveProps");
+  //   return null;
   // }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.defaultIsOpened !== this.props.defaultIsOpened) {
+      // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+      this.setState({ isOpened: (nextProps.defaultIsOpened === undefined) ? true : nextProps.defaultIsOpened });
+    }
+    console.log("componentWillReceiveProps");
+  }
 
   render() {
     // TODO: why 'float-right' doesn't work
