@@ -13,6 +13,7 @@ class Article extends Component {
 
   static getDerivedStateFromProps(props, state) {
     // TODO: change in accordance with https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops
+    // TODO: no condition to simplify code
     return { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }
   }
 
