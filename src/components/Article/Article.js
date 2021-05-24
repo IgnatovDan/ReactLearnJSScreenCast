@@ -3,7 +3,7 @@ import { Component } from 'react';
 class Article extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpened: (props.article?.isOpened === undefined) ? true : props.article?.isOpened }; // TODO: is it correct?
+    this.state = { isOpened: (props.defaultIsOpened === undefined) ? true : props.defaultIsOpened }; // TODO: is it correct?
   }
 
   toggleBodyButtonHandler = () => {

@@ -6,9 +6,9 @@ export default function ArticleList({ articles }) {
     // TODO: force spaces after "="
     // TODO: rename 'ArticleList.js' to 'index.js'
 
-    const listItems = articles.map(article => 
+    const listItems = articles.map((article, index) => 
         <li key = {article.id} className = "article-list__li"><
-            Article article = {article} />
+            Article article = {article}  defaultIsOpened={index === 0}/>
         </li>
     );
     return (

@@ -12,20 +12,20 @@ test('date', () => {
 });
 
 test('isOpened: true', () => {
-    render(<Article article={{text: 'text1', isOpened: true}}/>);
+    render(<Article article={{text: 'text1'}} defaultIsOpened={true} />);
     expect(screen.getByText("text1")).toBeInTheDocument();
     expect(screen.getByText("Close")).toBeInTheDocument();
     expect(() => screen.getByText("Open")).toThrow();
 });
 
 test('isOpened: false', () => {
-    render(<Article article={{text: 'text1', isOpened: false}}/>);
+    render(<Article article={{text: 'text1'}}  defaultIsOpened={false}/>);
     expect(() => screen.getByText("text1")).toThrow();
     expect(() => screen.getByText("Close")).toThrow();
     expect(screen.getByText("Open")).toBeInTheDocument();
 });
 
 test('toggleBodyButtonHandler', () => {
-    render(<Article article={{text: 'text1', isOpened: false}}/>);
+    render(<Article article={{text: 'text1'}} defaultIsOpened={false}/>);
     // TODO: how to test it ?
 });
