@@ -29,6 +29,6 @@ test('toggleBodyButtonHandler', () => {
     // TODO: how to test it ?
 });
 
-test('UNSAFE_componentWillReceiveProps', () => {
+test('getDerivedStateFromProps', () => {
     // TODO: how to test it ?
 });
