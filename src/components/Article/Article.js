@@ -8,6 +8,7 @@ class Article extends Component {
   }
 
   toggleBodyButtonHandler = () => {
+    console.log("toggleBodyButtonHandler");
     this.setState({ isOpened: !this.state.isOpened });
   }
 
@@ -28,11 +29,27 @@ class Article extends Component {
     }
     console.log("componentWillReceiveProps");
   }
+  
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+
+  /*shouldComponentUpdate() { - don't implement without result, will break end user behaviour
+    console.log("shouldComponentUpdate");
+  }*/
+
+  //componentWillUpdate -> getSnapshotBeforeUpdate 
 
   render() {
     // TODO: why 'float-right' doesn't work
     // TODO: why inplace suggestions doesn't work for className: "card mx-auto"
 
+    console.log(`Article.render: ${this.props.article.title}`);
+   
     const article = this.props.article || {};
     const articleBody = this.state.isOpened && <div className="card-text">{article.text}</div>;
 
